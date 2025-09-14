@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { Star, Award, Users, Calendar } from "lucide-react"
 import Button from "@/components/ui/Button"
 import ClickSpark from "@/components/animations/ClickSpark"
+import SpotlightCard from "@/components/animations/SpotlightCard"
 import { fadeInUp, slideInRight, staggerContainer } from "@/components/animations/variants"
 
 const Hero = () => {
@@ -95,21 +96,38 @@ const Hero = () => {
             animate="animate"
           >
             <div className="relative">
-              {/* Main Image Placeholder */}
-              <motion.div
-                className="aspect-[3/4] bg-gradient-to-br from-primary/20 to-secondary/20 rounded-3xl overflow-hidden shadow-2xl max-w-md mx-auto"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.3 }}
+              {/* Professional Spotlight Card */}
+              <SpotlightCard 
+                className="aspect-[4/5] max-w-sm mx-auto p-0 bg-gradient-to-br from-white/5 to-primary/5 border-white/20"
+                spotlightColor="rgba(168, 85, 247, 0.25)"
               >
-                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/10 to-secondary/10">
-                  <div className="text-center">
-                    <div className="w-32 h-32 bg-primary/20 rounded-full mx-auto mb-4 flex items-center justify-center">
-                      <Users className="w-16 h-16 text-primary" />
+                {/* Background Image */}
+                <div className="absolute inset-0 rounded-2xl overflow-hidden">
+                  <img 
+                    src="/hero-background.png" 
+                    alt="Professional Salon Excellence"
+                    className="w-full h-full object-cover object-center"
+                  />
+                  
+                  {/* Professional gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent"></div>
+                  
+                  {/* Elegant content overlay */}
+                  <div className="absolute inset-0 flex flex-col justify-end p-6">
+                    <div className="text-center space-y-2">
+                      <div className="inline-flex items-center justify-center w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full mb-3">
+                        <Star className="w-6 h-6 text-white" />
+                      </div>
+                      <h3 className="text-white font-bold text-xl tracking-wide drop-shadow-lg">
+                        Professional Excellence
+                      </h3>
+                      <p className="text-white/90 text-sm font-medium drop-shadow-md">
+                        Where Beauty Meets Artistry
+                      </p>
                     </div>
-                    <p className="text-gray-600 font-medium">Professional Salon Image</p>
                   </div>
                 </div>
-              </motion.div>
+              </SpotlightCard>
 
               {/* Floating Cards */}
               <motion.div
@@ -123,8 +141,8 @@ const Hero = () => {
                     <Star className="w-5 h-5 md:w-6 md:h-6 text-primary" />
                   </div>
                   <div>
-                    <div className="font-semibold text-gray-900 text-sm md:text-base">5.0 Rating</div>
-                    <div className="text-xs md:text-sm text-gray-600">200+ Reviews</div>
+                    <div className="font-semibold text-gray-900 text-sm md:text-base">Premium Services</div>
+                    <div className="text-xs md:text-sm text-gray-600">Hair & Makeup</div>
                   </div>
                 </div>
               </motion.div>
@@ -140,8 +158,8 @@ const Hero = () => {
                     <Award className="w-5 h-5 md:w-6 md:h-6 text-secondary" />
                   </div>
                   <div>
-                    <div className="font-semibold text-gray-900 text-sm md:text-base">Award Winner</div>
-                    <div className="text-xs md:text-sm text-gray-600">Best Salon 2024</div>
+                    <div className="font-semibold text-gray-900 text-sm md:text-base">Master Stylist</div>
+                    <div className="text-xs md:text-sm text-gray-600">Certified Professional</div>
                   </div>
                 </div>
               </motion.div>

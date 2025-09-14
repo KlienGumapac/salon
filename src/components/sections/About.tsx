@@ -3,32 +3,32 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Award, Users, Star, Heart, Sparkles } from 'lucide-react';
-import { fadeInUp, staggerContainer } from '../animations/variants';
-import CircularGallery from '../animations/CircularGallery';
+import { fadeInUp, staggerContainer } from '@/components/animations/variants';
+import CircularGallery from '@/components/animations/CircularGallery';
 
 const About = () => {
 
 
   const achievements = [
     {
-      icon: Award,
-      title: "Best Salon 2024",
-      description: "Awarded by City Beauty Magazine"
-    },
-    {
-      icon: Star,
-      title: "5-Star Rating",
-      description: "Based on 200+ customer reviews"
+      icon: Sparkles,
+      title: "Spotless & Hygienic",
+      description: "Maintaining the highest standards of cleanliness and sanitation for your safety"
     },
     {
       icon: Users,
-      title: "500+ Happy Clients",
-      description: "Served with excellence since 2009"
+      title: "Happy Clients",
+      description: "Countless satisfied customers who trust us with their beauty needs"
     },
     {
-      icon: Sparkles,
+      icon: Star,
       title: "Premium Products",
-      description: "Using only the finest beauty brands"
+      description: "Using only the finest and highest quality beauty brands and materials"
+    },
+    {
+      icon: Award,
+      title: "One of the Best Salons",
+      description: "Recognized for exceptional service and outstanding results in the community"
     }
   ]
 

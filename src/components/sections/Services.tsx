@@ -3,9 +3,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Scissors, Palette, Sparkles, Crown, LucideIcon } from 'lucide-react';
-import Button from '../ui/Button';
-import { fadeInUp, staggerContainer } from '../animations/variants';
-import ClickSpark from '../animations/ClickSpark';
+import Button from '@/components/ui/Button';
+import { fadeInUp, staggerContainer } from '@/components/animations/variants';
+import ClickSpark from '@/components/animations/ClickSpark';
 
 interface Service {
   icon: LucideIcon;
@@ -23,62 +23,47 @@ const ServiceCard = ({ service }: { service: Service }) => {
       {/* Gradient Background on Hover */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
       
-      {/* Main Content */}
-      <div className="relative p-8 h-full flex flex-col">
-        {/* Layered Icon Design */}
-        <div className="relative mb-6">
-          <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-            <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center shadow-lg">
-              <IconComponent className="w-8 h-8 text-primary" />
-            </div>
+      {/* Main Content - Compact */}
+      <div className="relative p-4 h-full flex flex-col">
+        {/* Compact Icon Design */}
+        <div className="relative mb-3 text-center">
+          <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 mx-auto">
+            <IconComponent className="w-6 h-6 text-primary" />
           </div>
           
-          {/* Decorative Dots */}
-          <div className="absolute -top-2 -right-2 w-4 h-4 bg-secondary rounded-full opacity-60"></div>
-          <div className="absolute -bottom-1 -left-1 w-3 h-3 bg-primary rounded-full opacity-40"></div>
+          {/* Small Decorative Dot */}
+          <div className="absolute -top-1 -right-1 w-3 h-3 bg-secondary rounded-full opacity-60"></div>
         </div>
 
         {/* Title and Description */}
-        <div className="text-center mb-6">
-          <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary transition-colors duration-300">
+        <div className="text-center mb-3 flex-1">
+          <h3 className="text-base font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors duration-300">
             {service.title}
           </h3>
-          <p className="text-gray-600 leading-relaxed mb-4 font-medium text-sm">
+          <p className="text-gray-600 leading-relaxed text-xs line-clamp-2">
             {service.description}
           </p>
         </div>
 
-        {/* Price with modern styling */}
-        <div className="text-center mb-6">
-          <div className="inline-flex items-center justify-center px-4 py-2 bg-gradient-to-r from-primary/10 to-primary/5 rounded-full border border-primary/20">
-            <span className="text-2xl font-bold text-primary">{service.price}</span>
+        {/* Price with compact styling */}
+        <div className="text-center mb-3">
+          <div className="inline-flex items-center justify-center px-3 py-1.5 bg-gradient-to-r from-primary/10 to-primary/5 rounded-full border border-primary/20">
+            <span className="text-lg font-bold text-primary">{service.price}</span>
           </div>
         </div>
 
-        {/* Features with modern checkmarks */}
-        <div className="space-y-3 mb-8">
-          {service.features.map((feature: string, idx: number) => (
-            <div key={idx} className="flex items-center gap-3">
-              <div className="flex-shrink-0 w-5 h-5 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center">
-                <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <span className="text-sm text-gray-700 font-medium">{feature}</span>
-            </div>
-          ))}
-        </div>
 
-        {/* Modern CTA Button with Click Spark */}
+
+        {/* Compact CTA Button */}
         <div className="relative">
-          <ClickSpark color="#d4af37" sparkCount={6}>
+          <ClickSpark color="#d4af37" sparkCount={4}>
             <Button 
               variant="primary" 
-              className="w-full bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary shadow-lg hover:shadow-xl group-hover:shadow-primary/25 transition-all duration-300 rounded-xl py-3"
+              className="w-full bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary shadow-lg hover:shadow-xl group-hover:shadow-primary/25 transition-all duration-300 rounded-lg py-2 text-sm"
             >
-              <span className="flex items-center justify-center gap-2">
+              <span className="flex items-center justify-center gap-1">
                 Book Now
-                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-3 h-3 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </span>
@@ -97,45 +82,80 @@ const Services = () => {
   const services = [
     {
       icon: Scissors,
-      title: "Hair Styling & Cuts",
-      description: "Expert cuts, styling, and treatments for all hair types. From classic to contemporary looks.",
-      price: "Starting at ₱1,800",
-      features: ["Consultation", "Wash & Cut", "Styling", "Aftercare Tips"]
-    },
-    {
-      icon: Palette,
-      title: "Hair Coloring",
-      description: "Professional coloring services including highlights, balayage, and full color transformations.",
-      price: "Starting at ₱3,400",
-      features: ["Color Consultation", "Premium Products", "Color Protection", "Touch-up Service"]
+      title: "Nano Silk Rebond",
+      description: "Premium silk protein rebonding for smooth, straight hair.",
+      price: "₱2,000",
+      features: ["Silk Protein", "Long-lasting", "Smooth Finish"]
     },
     {
       icon: Sparkles,
-      title: "Bridal Services",
-      description: "Complete bridal beauty packages for your special day. Hair, makeup, and styling.",
-      price: "Starting at ₱8,000",
-      features: ["Trial Session", "Wedding Day Service", "Touch-up Kit", "Photography Ready"]
+      title: "Kerabond",
+      description: "Advanced keratin bonding treatment for healthier hair.",
+      price: "₱1,500",
+      features: ["Keratin Infusion", "Hair Repair", "Shine Enhancement"]
     },
     {
       icon: Crown,
-      title: "Hair Treatments",
-      description: "Rejuvenating treatments including keratin, deep conditioning, and scalp care.",
-      price: "Starting at ₱2,600",
-      features: ["Hair Analysis", "Custom Treatment", "Professional Products", "Home Care Guide"]
+      title: "Keratin Blowout",
+      description: "Professional keratin treatment with blowout styling.",
+      price: "₱1,000",
+      features: ["Frizz Control", "Volume Boost", "Styling"]
     },
     {
-      icon: Sparkles, // Changed from Heart to Sparkles for consistency
-      title: "Makeup Services",
-      description: "Professional makeup for special occasions, photoshoots, and everyday glamour.",
-      price: "Starting at ₱2,200",
-      features: ["Skin Preparation", "Professional Application", "Long-lasting Formula", "Touch-up Tips"]
+      icon: Palette,
+      title: "Brazilian Blowout",
+      description: "Signature Brazilian smoothing treatment.",
+      price: "₱1,000",
+      features: ["Anti-Frizz", "Smooth Texture", "Quick Service"]
     },
     {
-      icon: Scissors, // Changed from Zap to Scissors for consistency
-      title: "Express Services",
-      description: "Quick touch-ups and styling for busy schedules. Perfect for last-minute needs.",
-      price: "Starting at ₱1,000",
-      features: ["Quick Styling", "Touch-ups", "Express Blowout", "Same Day Booking"]
+      icon: Sparkles,
+      title: "Keratin Treatment",
+      description: "Basic keratin treatment for hair restoration.",
+      price: "₱500",
+      features: ["Hair Repair", "Strengthening", "Conditioning"]
+    },
+    {
+      icon: Palette,
+      title: "Hair Color",
+      description: "Professional hair coloring and highlights.",
+      price: "₱500",
+      features: ["Color Consultation", "Premium Dyes", "Color Care"]
+    },
+    {
+      icon: Crown,
+      title: "Hair and Makeup",
+      description: "Complete styling package for special occasions.",
+      price: "₱750",
+      features: ["Hair Styling", "Makeup Application", "Touch-ups"]
+    },
+    {
+      icon: Scissors,
+      title: "Haircut",
+      description: "Professional haircut and styling service.",
+      price: "₱200",
+      features: ["Consultation", "Cut & Style", "Hair Wash"]
+    },
+    {
+      icon: Sparkles,
+      title: "Manicure",
+      description: "Professional nail care and polish application.",
+      price: "₱100",
+      features: ["Nail Care", "Polish", "Hand Massage"]
+    },
+    {
+      icon: Sparkles,
+      title: "Pedicure",
+      description: "Complete foot care and nail treatment.",
+      price: "₱150",
+      features: ["Foot Care", "Nail Polish", "Foot Massage"]
+    },
+    {
+      icon: Crown,
+      title: "Foot Spa",
+      description: "Relaxing foot spa treatment and massage.",
+      price: "₱250",
+      features: ["Foot Soak", "Scrub", "Relaxing Massage"]
     }
   ]
 
@@ -185,7 +205,7 @@ const Services = () => {
 
         {/* Desktop Grid */}
         <motion.div
-          className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="hidden md:grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4"
           variants={staggerContainer}
           initial="initial"
           whileInView="animate"

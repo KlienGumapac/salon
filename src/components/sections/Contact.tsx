@@ -73,10 +73,10 @@ const Contact = () => {
       service: "Hair Color & Cut"
     },
     {
-      name: "Maria Garcia",
+      name: "Lyz VB",
       rating: 5,
-      review: "The bridal package was perfect for my wedding day. The team made me feel so beautiful and confident!",
-      service: "Bridal Services"
+      review: "Just got my haircut today by ma'am Mai-mai. I don't regret having my haircut there. Their service is great, they are welcoming, polite and I am very satisfied with the result. Thank you very much especially for ma'am Mai-mai 😊😘 I'll be back. Keep up the good work. God bless you more 🙏",
+      service: "Hair Cut"
     },
     {
       name: "Jennifer Lee",
