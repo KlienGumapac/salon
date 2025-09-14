@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { Star, Award, Users, Calendar } from "lucide-react"
 import Button from "@/components/ui/Button"
+import ClickSpark from "@/components/animations/ClickSpark"
 import { fadeInUp, slideInLeft, slideInRight, staggerContainer } from "@/components/animations/variants"
 
 const Hero = () => {
@@ -53,12 +54,16 @@ const Hero = () => {
               variants={fadeInUp}
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12"
             >
-              <Button size="lg" className="text-lg px-8 py-4">
-                Book Your Appointment
-              </Button>
-              <Button variant="outline" size="lg" className="text-lg px-8 py-4">
-                View Our Services
-              </Button>
+              <ClickSpark color="#d4af37" sparkCount={10}>
+                <Button size="lg" className="text-lg px-8 py-4">
+                  Book Your Appointment
+                </Button>
+              </ClickSpark>
+              <ClickSpark color="#d4af37" sparkCount={6}>
+                <Button variant="outline" size="lg" className="text-lg px-8 py-4">
+                  View Our Services
+                </Button>
+              </ClickSpark>
             </motion.div>
 
             {/* Stats */}
