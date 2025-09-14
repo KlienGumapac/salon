@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { Camera } from 'lucide-react'
 
 interface CircularGalleryProps {
-  images?: Array<{ id: string; title: string; category: string }>
+  images?: Array<{ id: string; title: string; category: string; image?: string }>
   radius?: number
   itemSize?: number
   autoRotate?: boolean
@@ -22,14 +22,14 @@ const CircularGallery = ({
   const [rotation, setRotation] = useState(0)
 
   const defaultImages = [
-    { id: '1', title: 'Hair Styling', category: 'styling' },
-    { id: '2', title: 'Hair Coloring', category: 'coloring' },
-    { id: '3', title: 'Bridal Look', category: 'bridal' },
-    { id: '4', title: 'Hair Treatment', category: 'treatment' },
-    { id: '5', title: 'Makeup Service', category: 'makeup' },
-    { id: '6', title: 'Hair Cut', category: 'cuts' },
-    { id: '7', title: 'Special Event', category: 'events' },
-    { id: '8', title: 'Color Correction', category: 'coloring' }
+    { id: '1', title: 'Hair Styling', category: 'styling', image: '/circular1.jpg' },
+    { id: '2', title: 'Hair Coloring', category: 'coloring', image: '/circular10.jpg' },
+    { id: '3', title: 'Bridal Look', category: 'bridal', image: '/circular3.jpg' },
+    { id: '4', title: 'Hair Treatment', category: 'treatment', image: '/circular11.jpg' },
+    { id: '5', title: 'Makeup Service', category: 'makeup', image: '/circular5.jpg' },
+    { id: '6', title: 'Hair Cut', category: 'cuts', image: '/circular6.jpg' },
+    { id: '7', title: 'Special Event', category: 'events', image: '/circular7.jpg' },
+    { id: '8', title: 'Nail Art', category: 'nails', image: '/circular8.jpg' }
   ]
 
   const galleryImages = images || defaultImages
@@ -61,7 +61,8 @@ const CircularGallery = ({
       treatment: 'from-green-400/20 to-green-600/30',
       makeup: 'from-red-400/20 to-red-600/30',
       cuts: 'from-yellow-400/20 to-yellow-600/30',
-      events: 'from-indigo-400/20 to-indigo-600/30'
+      events: 'from-indigo-400/20 to-indigo-600/30',
+      nails: 'from-rose-400/20 to-rose-600/30'
     }
     return gradients[category as keyof typeof gradients] || 'from-primary/20 to-primary/30'
   }
@@ -113,18 +114,17 @@ const CircularGallery = ({
                 rotate: -angle 
               }}
             >
-              {/* Image placeholder */}
-              <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-white/10 to-white/5">
-                <div className="text-center">
-                  <Camera className="w-12 h-12 text-primary/60 mx-auto mb-2" />
-                  <p className="text-sm font-medium text-primary/80 px-2 leading-tight">
-                    {image.title}
-                  </p>
-                </div>
+              {/* Actual Image */}
+              <div className="w-full h-full relative overflow-hidden">
+                <img 
+                  src={image.image} 
+                  alt={image.title}
+                  className="w-full h-full object-cover"
+                />
               </div>
 
               {/* Hover overlay */}
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300 flex items-center justify-center">
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
                 <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="bg-white/90 backdrop-blur-sm rounded-full p-2">
                     <Camera className="w-4 h-4 text-primary" />
@@ -132,12 +132,7 @@ const CircularGallery = ({
                 </div>
               </div>
 
-              {/* Category badge */}
-              <div className="absolute top-2 left-2">
-                <span className="px-2 py-1 bg-white/80 backdrop-blur-sm text-primary text-xs font-medium rounded-full capitalize">
-                  {image.category}
-                </span>
-              </div>
+
             </motion.div>
           </motion.div>
         )

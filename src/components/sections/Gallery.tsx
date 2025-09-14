@@ -3,8 +3,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Camera, ChevronLeft, ChevronRight, X } from 'lucide-react';
-import Button from '../ui/Button';
-import { fadeInUp, staggerContainer } from '../animations/variants';
+import Button from '@/components/ui/Button';
+import { fadeInUp, staggerContainer } from '@/components/animations/variants';
 
 interface GalleryItem {
   id: number;
@@ -22,10 +22,12 @@ const GalleryImage = ({ item, height }: { item: GalleryItem; height: string }) =
       whileHover={{ scale: 1.02 }}
       transition={{ duration: 0.3 }}
     >
-      {/* Image Placeholder */}
-      <div className="w-full h-full bg-gradient-to-br from-primary/20 via-secondary/10 to-primary/30 flex items-center justify-center">
-        <Camera className="w-12 h-12 text-primary/60" />
-      </div>
+      {/* Actual Image */}
+      <img 
+        src={item.image} 
+        alt={item.title}
+        className="w-full h-full object-cover"
+      />
       
       {/* Overlay with hover effect */}
       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
@@ -38,7 +40,7 @@ const GalleryImage = ({ item, height }: { item: GalleryItem; height: string }) =
 
       {/* Category Badge */}
       <div className="absolute top-3 left-3">
-        <span className="px-3 py-1 bg-white/90 backdrop-blur-sm text-primary text-xs font-medium rounded-full">
+        <span className="px-3 py-1 bg-white/90 backdrop-blur-sm text-primary text-xs font-medium rounded-full capitalize">
           {item.category}
         </span>
       </div>
@@ -54,99 +56,75 @@ const Gallery = () => {
   const galleryItems = [
     {
       id: 1,
-      category: "bridal",
-      title: "Elegant Bridal Updo",
-      description: "Classic bridal hairstyle with delicate curls and pearl accessories",
-      image: "/gallery/bridal-1.jpg",
-      tags: ["Bridal", "Updo", "Classic"]
+      category: "styling",
+      title: "Hair Styling Excellence",
+      description: "Professional hair styling showcase",
+      image: "/circular1.jpg",
+      tags: ["Styling", "Professional", "Excellence"]
     },
     {
       id: 2,
-      category: "color",
-      title: "Balayage Transformation",
-      description: "Beautiful blonde balayage with natural highlights",
-      image: "/gallery/color-1.jpg",
-      tags: ["Balayage", "Blonde", "Highlights"]
+      category: "nails",
+      title: "Nail Art Mastery",
+      description: "Beautiful nail art and manicure work",
+      image: "/circular9.jpg",
+      tags: ["Nails", "Art", "Manicure"]
     },
     {
       id: 3,
-      category: "cuts",
-      title: "Modern Bob Cut",
-      description: "Sleek and sophisticated bob with subtle layers",
-      image: "/gallery/cut-1.jpg",
-      tags: ["Bob", "Modern", "Layers"]
+      category: "treatment",
+      title: "Hair Treatment Results",
+      description: "Stunning hair treatment transformations",
+      image: "/circular11.jpg",
+      tags: ["Treatment", "Transformation", "Results"]
     },
     {
       id: 4,
-      category: "makeup",
-      title: "Glamorous Evening Look",
-      description: "Stunning evening makeup with smoky eyes and bold lips",
-      image: "/gallery/makeup-1.jpg",
-      tags: ["Evening", "Smoky Eyes", "Glamour"]
+      category: "nails",
+      title: "Elegant Nail Design",
+      description: "Sophisticated nail designs and finishes",
+      image: "/circular8.jpg",
+      tags: ["Nails", "Design", "Elegant"]
     },
     {
       id: 5,
-      category: "bridal",
-      title: "Romantic Bridal Style",
-      description: "Soft romantic waves with floral accessories",
-      image: "/gallery/bridal-2.jpg",
-      tags: ["Bridal", "Romantic", "Waves"]
+      category: "events",
+      title: "Special Event Styling",
+      description: "Glamorous styling for special occasions",
+      image: "/circular7.jpg",
+      tags: ["Events", "Glamour", "Special"]
     },
     {
       id: 6,
-      category: "color",
-      title: "Ombre Masterpiece",
-      description: "Stunning ombre from dark roots to light ends",
-      image: "/gallery/color-2.jpg",
-      tags: ["Ombre", "Gradient", "Brunette"]
+      category: "cuts",
+      title: "Professional Hair Cuts",
+      description: "Expert hair cutting and styling services",
+      image: "/circular6.jpg",
+      tags: ["Cuts", "Professional", "Styling"]
     },
     {
       id: 7,
-      category: "events",
-      title: "Prom Night Glam",
-      description: "Elegant updo perfect for prom night",
-      image: "/gallery/event-1.jpg",
-      tags: ["Prom", "Updo", "Elegant"]
+      category: "treatment",
+      title: "Hair Care Excellence",
+      description: "Premium hair treatment and care services",
+      image: "/circular4.jpg",
+      tags: ["Treatment", "Care", "Premium"]
     },
     {
       id: 8,
-      category: "cuts",
-      title: "Layered Long Hair",
-      description: "Beautiful long layers with face-framing highlights",
-      image: "/gallery/cut-2.jpg",
-      tags: ["Long Hair", "Layers", "Highlights"]
+      category: "color",
+      title: "Hair Coloring Artistry",
+      description: "Beautiful hair coloring and highlights",
+      image: "/circular2.jpg",
+      tags: ["Color", "Artistry", "Highlights"]
     },
     {
       id: 9,
-      category: "makeup",
-      title: "Natural Bridal Makeup",
-      description: "Soft and natural bridal makeup look",
-      image: "/gallery/makeup-2.jpg",
-      tags: ["Bridal", "Natural", "Soft"]
-    },
-    {
-      id: 10,
-      category: "color",
-      title: "Platinum Blonde",
-      description: "Stunning platinum blonde transformation",
-      image: "/gallery/color-3.jpg",
-      tags: ["Platinum", "Blonde", "Transformation"]
-    },
-    {
-      id: 11,
-      category: "events",
-      title: "Wedding Party Style",
-      description: "Coordinated styling for wedding party members",
-      image: "/gallery/event-2.jpg",
-      tags: ["Wedding", "Party", "Coordinated"]
-    },
-    {
-      id: 12,
-      category: "cuts",
-      title: "Pixie Cut Perfection",
-      description: "Chic and modern pixie cut with textured styling",
-      image: "/gallery/cut-3.jpg",
-      tags: ["Pixie", "Short", "Modern"]
+      category: "bridal",
+      title: "Bridal Beauty Services",
+      description: "Complete bridal styling and beauty packages",
+      image: "/circular3.jpg",
+      tags: ["Bridal", "Beauty", "Complete"]
     }
   ]
 
