@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { Star, Award, Users, Calendar } from "lucide-react"
 import Button from "@/components/ui/Button"
 import ClickSpark from "@/components/animations/ClickSpark"
-import { fadeInUp, slideInLeft, slideInRight, staggerContainer } from "@/components/animations/variants"
+import { fadeInUp, slideInRight, staggerContainer } from "@/components/animations/variants"
 
 const Hero = () => {
   const stats = [

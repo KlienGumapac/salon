@@ -28,24 +28,28 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     }
 
     return (
-      <motion.button
-        ref={ref}
-        className={cn(
-          baseClasses,
-          variants[variant],
-          sizes[size],
-          className
-        )}
+      <motion.div
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
-        disabled={isLoading}
-        {...props}
+        className="inline-block"
       >
-        {isLoading ? (
-          <div className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin mr-2" />
-        ) : null}
-        {children}
-      </motion.button>
+        <button
+          ref={ref}
+          className={cn(
+            baseClasses,
+            variants[variant],
+            sizes[size],
+            className
+          )}
+          disabled={isLoading}
+          {...props}
+        >
+          {isLoading ? (
+            <div className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin mr-2" />
+          ) : null}
+          {children}
+        </button>
+      </motion.div>
     )
   }
 )

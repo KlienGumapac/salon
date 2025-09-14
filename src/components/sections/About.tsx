@@ -1,10 +1,10 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { Award, Heart, Users, Sparkles, Clock, Star } from "lucide-react"
-import Card from "@/components/ui/Card"
-import CircularGallery from "@/components/animations/CircularGallery"
-import { fadeInUp, staggerContainer, slideInLeft, slideInRight } from "@/components/animations/variants"
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Award, Users, Star, Heart, Sparkles } from 'lucide-react';
+import { fadeInUp, staggerContainer } from '../animations/variants';
+import CircularGallery from '../animations/CircularGallery';
 
 const About = () => {
 
@@ -61,7 +61,7 @@ const About = () => {
         {/* Story Section */}
         <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
           <motion.div
-            variants={slideInLeft}
+            variants={fadeInUp}
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
@@ -71,8 +71,10 @@ const About = () => {
             </h3>
             <div className="space-y-4 text-gray-700 font-medium">
               <p>
-                Founded in 2009 by master stylist Sheila Magpale, our salon began with a simple mission: 
-                to create a space where beauty meets excellence, and every client leaves feeling like a champion.
+                Founded in 2009, Sheila Magpale Salon has been transforming lives through the art of beauty. 
+                We believe that every client deserves to feel like a champion, and that&apos;s exactly what we deliver. 
+                Our passion for excellence and commitment to using only the finest products and techniques 
+                has made us the premier destination for beauty in our community.
               </p>
               <p>
                 What started as a small neighborhood salon has grown into a premier destination for hair styling, 
@@ -81,15 +83,15 @@ const About = () => {
               </p>
               <p>
                 We pride ourselves on using only premium products and providing personalized service that caters 
-                to each client's unique style and needs. From everyday looks to special occasion styling, 
-                we're here to help you look and feel your absolute best.
+                to each client&apos;s unique style and needs. From everyday looks to special occasion styling, 
+                we&apos;re here to help you look and feel your absolute best.
               </p>
             </div>
           </motion.div>
 
           <motion.div
             className="relative"
-            variants={slideInRight}
+            variants={fadeInUp}
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
@@ -190,16 +192,19 @@ const About = () => {
         >
           <div className="bg-gradient-to-r from-primary/5 to-secondary/5 rounded-3xl p-8 md:p-12">
             <div className="flex items-center justify-center mb-6">
-              <Clock className="w-12 h-12 text-primary" />
+              {/* Clock icon was removed from imports, so this line is removed */}
             </div>
             <h3 className="text-2xl md:text-3xl font-serif font-bold text-gray-900 mb-4">
               Our Commitment to Excellence
             </h3>
-            <p className="text-lg text-gray-700 mb-8 max-w-3xl mx-auto font-medium">
+            <motion.p 
+              className="text-lg text-gray-700 mb-8 max-w-3xl mx-auto font-medium"
+              variants={fadeInUp}
+            >
               We are committed to providing exceptional service, using premium products, 
               and staying current with the latest trends and techniques. Your satisfaction 
-              is our priority, and we won't rest until you leave feeling like a champion.
-            </p>
+              is our priority, and we won&apos;t rest until you leave feeling like a champion.
+            </motion.p>
             <div className="grid md:grid-cols-3 gap-6 text-center">
               <div>
                 <h4 className="font-semibold text-gray-900 mb-2">Quality Products</h4>

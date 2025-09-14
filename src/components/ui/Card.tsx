@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 import { HTMLAttributes, forwardRef } from "react"
 
-interface CardProps extends HTMLAttributes<HTMLDivElement> {
+interface CardProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onDrag' | 'onDragStart' | 'onDragEnd'> {
   hover?: boolean
   padding?: "sm" | "md" | "lg"
 }
@@ -34,7 +34,8 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        {...props}
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        {...(props as any)}
       >
         {children}
       </motion.div>

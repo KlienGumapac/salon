@@ -1,13 +1,21 @@
 "use client"
 
-import { useState, useRef, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { X, ChevronLeft, ChevronRight, Camera, Star } from "lucide-react"
-import Card from "@/components/ui/Card"
-import Button from "@/components/ui/Button"
-import { fadeInUp, staggerContainer, scaleIn } from "@/components/animations/variants"
+import React, { useEffect, useState, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Camera, ChevronLeft, ChevronRight, X } from 'lucide-react';
+import Button from '../ui/Button';
+import { fadeInUp, staggerContainer } from '../animations/variants';
 
-const GalleryImage = ({ item, height }: { item: any; height: string }) => {
+interface GalleryItem {
+  id: number;
+  category: string;
+  title: string;
+  description: string;
+  image: string;
+  tags: string[];
+}
+
+const GalleryImage = ({ item, height }: { item: GalleryItem; height: string }) => {
   return (
     <motion.div
       className={`relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer group ${height}`}
@@ -158,18 +166,6 @@ const Gallery = () => {
     }
   }
 
-  const nextSlide = () => {
-    const newIndex = currentIndex >= maxIndex ? 0 : currentIndex + 1
-    setCurrentIndex(newIndex)
-    scrollToIndex(newIndex)
-  }
-
-  const prevSlide = () => {
-    const newIndex = currentIndex <= 0 ? maxIndex : currentIndex - 1
-    setCurrentIndex(newIndex)
-    scrollToIndex(newIndex)
-  }
-
   const nextImage = () => {
     if (selectedImage !== null) {
       setSelectedImage((selectedImage + 1) % filteredItems.length)
@@ -183,13 +179,13 @@ const Gallery = () => {
   }
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      nextSlide()
-    }, 4000) 
-
-    return () => clearInterval(interval)
-  }, [currentIndex, maxIndex])
-
+    const timer = setInterval(() => {
+      const newIndex = currentIndex >= maxIndex ? 0 : currentIndex + 1
+      setCurrentIndex(newIndex)
+      scrollToIndex(newIndex)
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [currentIndex, maxIndex]);
 
 
   return (

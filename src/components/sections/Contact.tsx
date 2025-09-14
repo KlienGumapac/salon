@@ -1,11 +1,19 @@
 "use client"
 
-import { useState } from "react"
-import { motion } from "framer-motion"
-import { Phone, Mail, MapPin, Clock, Send, MessageCircle, Calendar, Star } from "lucide-react"
-import Card from "@/components/ui/Card"
-import Button from "@/components/ui/Button"
-import { fadeInUp, staggerContainer, slideInLeft, slideInRight } from "@/components/animations/variants"
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { 
+  Phone, 
+  Mail, 
+  MapPin, 
+  Clock, 
+  Calendar, 
+  MessageSquare,
+  Star,
+  ThumbsUp
+} from 'lucide-react';
+import Button from '../ui/Button';
+import { fadeInUp, staggerContainer } from '../animations/variants';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -123,7 +131,7 @@ const Contact = () => {
             </h2>
             <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed font-medium">
               Ready to become a champion? Get in touch with us to book your appointment or learn more 
-              about our services. We're here to help you achieve your perfect look.
+              about our services. We&apos;re here to help you achieve your perfect look.
             </p>
           </motion.div>
         </motion.div>
@@ -187,7 +195,7 @@ const Contact = () => {
         <div className="grid lg:grid-cols-2 gap-16 mb-16">
           {/* Contact Form */}
           <motion.div
-            variants={slideInLeft}
+            variants={fadeInUp}
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
@@ -201,7 +209,7 @@ const Contact = () => {
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center">
                     <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-lg">
-                      <MessageCircle className="w-6 h-6 text-primary" />
+                      <MessageSquare className="w-6 h-6 text-primary" />
                     </div>
                   </div>
                   <h3 className="text-2xl font-serif font-bold text-gray-900 group-hover:text-primary transition-colors duration-300">
@@ -309,7 +317,7 @@ const Contact = () => {
                   className="w-full"
                   isLoading={isSubmitting}
                 >
-                  <Send className="w-5 h-5 mr-2" />
+                  <ThumbsUp className="w-5 h-5 mr-2" />
                   Send Message
                 </Button>
               </form>
@@ -322,7 +330,7 @@ const Contact = () => {
 
           {/* Map and Additional Info */}
           <motion.div
-            variants={slideInRight}
+            variants={fadeInUp}
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
@@ -392,7 +400,7 @@ const Contact = () => {
                     Call (555) 123-4567
                   </Button>
                   <Button variant="outline" className="w-full border-2 border-primary text-primary hover:bg-primary hover:text-white rounded-xl transition-all duration-300">
-                    <MessageCircle className="w-4 h-4 mr-2" />
+                    <MessageSquare className="w-4 h-4 mr-2" />
                     Text Us
                   </Button>
                 </div>
@@ -416,7 +424,7 @@ const Contact = () => {
               What Our Champions Say
             </h3>
             <p className="text-lg text-gray-700 max-w-2xl mx-auto font-medium">
-              Don't just take our word for it - hear from our satisfied clients who've experienced 
+              Don&apos;t just take our word for it - hear from our satisfied clients who&apos;ve experienced 
               the champion treatment at our salon.
             </p>
           </motion.div>
@@ -427,7 +435,7 @@ const Contact = () => {
                 <div className="relative bg-white rounded-3xl border border-gray-100 overflow-hidden group hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 hover:-translate-y-2 h-full">
                   {/* Quote decoration */}
                   <div className="absolute -top-2 -left-2 w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                    <span className="text-2xl text-primary font-serif">"</span>
+                    <span className="text-2xl text-primary font-serif">&quot;</span>
                   </div>
                   
                   {/* Gradient Background */}
@@ -457,7 +465,7 @@ const Contact = () => {
                     {/* Comment Text */}
                     <div className="mb-4">
                       <p className="text-gray-700 leading-relaxed font-medium text-sm italic">
-                        "{testimonial.review}"
+                        &quot;{testimonial.review}&quot;
                       </p>
                     </div>
 
@@ -479,7 +487,7 @@ const Contact = () => {
                           <span className="text-xs">24</span>
                         </button>
                         <button className="flex items-center gap-1 text-gray-400 hover:text-primary transition-colors duration-200">
-                          <MessageCircle className="w-4 h-4" />
+                          <MessageSquare className="w-4 h-4" />
                           <span className="text-xs">Reply</span>
                         </button>
                       </div>
