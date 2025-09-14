@@ -2,25 +2,121 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1a1a1a;
+  --primary: #d4af37;
+  --primary-dark: #b8941f;
+  --secondary: #2c2c2c;
+  --accent: #f8f9fa;
+  --muted: #4a5568;
+  --border: #e2e8f0;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-serif: var(--font-playfair), serif;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground: #f7fafc;
+    --accent: #1a202c;
+    --border: #4a5568;
+    --muted: #a0aec0;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* Enhanced text visibility */
+h1, h2, h3, h4, h5, h6 {
+  color: #1a202c !important;
+  font-weight: 700;
+}
+
+p {
+  color: #2d3748 !important;
+  font-weight: 500;
+}
+
+.text-muted {
+  color: #4a5568 !important;
+  font-weight: 500;
+}
+
+/* Specific overrides for better visibility */
+.text-foreground {
+  color: #1a202c !important;
+}
+
+.text-gray-900 {
+  color: #1a202c !important;
+}
+
+.text-gray-700 {
+  color: #2d3748 !important;
+}
+
+.text-gray-600 {
+  color: #4a5568 !important;
+}
+
+/* Footer specific text visibility */
+footer .text-gray-100 {
+  color: #f7fafc !important;
+}
+
+footer .text-gray-200 {
+  color: #edf2f7 !important;
+}
+
+footer h3, footer h4 {
+  color: #ffffff !important;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--accent);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
+
+/* Hide scrollbar for gallery */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
