@@ -6,6 +6,79 @@ import Card from "@/components/ui/Card"
 import Button from "@/components/ui/Button"
 import { fadeInUp, staggerContainer } from "@/components/animations/variants"
 
+const ServiceCard = ({ service, index }: { service: any; index: number }) => {
+  return (
+    <div className="relative h-full bg-white rounded-3xl border border-gray-100 overflow-hidden group hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 hover:-translate-y-2">
+      {/* Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+      
+      {/* Content */}
+      <div className="relative p-8">
+        {/* Icon with modern design */}
+        <div className="relative mb-6">
+          <div className="w-20 h-20 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300">
+            <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center shadow-lg">
+              <service.icon className="w-8 h-8 text-primary" />
+            </div>
+          </div>
+          {/* Decorative dots */}
+          <div className="absolute -top-2 -right-2 w-4 h-4 bg-primary/20 rounded-full"></div>
+          <div className="absolute -bottom-2 -left-2 w-3 h-3 bg-secondary/20 rounded-full"></div>
+        </div>
+
+        {/* Title and Description */}
+        <div className="text-center mb-6">
+          <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary transition-colors duration-300">
+            {service.title}
+          </h3>
+          <p className="text-gray-600 leading-relaxed mb-4 font-medium text-sm">
+            {service.description}
+          </p>
+        </div>
+
+        {/* Price with modern styling */}
+        <div className="text-center mb-6">
+          <div className="inline-flex items-center justify-center px-4 py-2 bg-gradient-to-r from-primary/10 to-primary/5 rounded-full border border-primary/20">
+            <span className="text-2xl font-bold text-primary">{service.price}</span>
+          </div>
+        </div>
+
+        {/* Features with modern checkmarks */}
+        <div className="space-y-3 mb-8">
+          {service.features.map((feature: string, idx: number) => (
+            <div key={idx} className="flex items-center gap-3">
+              <div className="flex-shrink-0 w-5 h-5 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center">
+                <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <span className="text-sm text-gray-700 font-medium">{feature}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Modern CTA Button */}
+        <div className="relative">
+          <Button 
+            variant="primary" 
+            className="w-full bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary shadow-lg hover:shadow-xl group-hover:shadow-primary/25 transition-all duration-300 rounded-xl py-3"
+          >
+            <span className="flex items-center justify-center gap-2">
+              Book Now
+              <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </span>
+          </Button>
+        </div>
+      </div>
+
+      {/* Bottom accent line */}
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary/50 via-primary to-primary/50 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+    </div>
+  );
+};
+
 const Services = () => {
   const services = [
     {
@@ -76,83 +149,37 @@ const Services = () => {
           </motion.div>
         </motion.div>
 
+        {/* Mobile Stacking Cards */}
+        <div className="block md:hidden relative">
+          {services.map((service, index) => (
+            <motion.div 
+              key={`mobile-${index}`}
+              className="sticky mb-4"
+              style={{ 
+                top: `${4 + index * 1.5}rem`,
+                zIndex: index + 1 
+              }}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true, margin: "-100px" }}
+            >
+              <ServiceCard service={service} index={index} />
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Desktop Grid */}
         <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8"
           variants={staggerContainer}
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
         >
           {services.map((service, index) => (
-            <motion.div key={index} variants={fadeInUp}>
-              <div className="relative h-full bg-white rounded-3xl border border-gray-100 overflow-hidden group hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 hover:-translate-y-2">
-                {/* Gradient Background */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                
-                {/* Content */}
-                <div className="relative p-8">
-                  {/* Icon with modern design */}
-                  <div className="relative mb-6">
-                    <div className="w-20 h-20 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300">
-                      <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center shadow-lg">
-                        <service.icon className="w-8 h-8 text-primary" />
-                      </div>
-                    </div>
-                    {/* Decorative dots */}
-                    <div className="absolute -top-2 -right-2 w-4 h-4 bg-primary/20 rounded-full"></div>
-                    <div className="absolute -bottom-2 -left-2 w-3 h-3 bg-secondary/20 rounded-full"></div>
-                  </div>
-
-                  {/* Title and Description */}
-                  <div className="text-center mb-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary transition-colors duration-300">
-                      {service.title}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed mb-4 font-medium text-sm">
-                      {service.description}
-                    </p>
-                  </div>
-
-                  {/* Price with modern styling */}
-                  <div className="text-center mb-6">
-                    <div className="inline-flex items-center justify-center px-4 py-2 bg-gradient-to-r from-primary/10 to-primary/5 rounded-full border border-primary/20">
-                      <span className="text-2xl font-bold text-primary">{service.price}</span>
-                    </div>
-                  </div>
-
-                  {/* Features with modern checkmarks */}
-                  <div className="space-y-3 mb-8">
-                    {service.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-center gap-3">
-                        <div className="flex-shrink-0 w-5 h-5 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center">
-                          <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                          </svg>
-                        </div>
-                        <span className="text-sm text-gray-700 font-medium">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Modern CTA Button */}
-                  <div className="relative">
-                    <Button 
-                      variant="primary" 
-                      className="w-full bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary shadow-lg hover:shadow-xl group-hover:shadow-primary/25 transition-all duration-300 rounded-xl py-3"
-                    >
-                      <span className="flex items-center justify-center gap-2">
-                        Book Now
-                        <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </span>
-                    </Button>
-                  </div>
-                </div>
-
-                {/* Bottom accent line */}
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary/50 via-primary to-primary/50 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
-              </div>
+            <motion.div key={`desktop-${index}`} variants={fadeInUp}>
+              <ServiceCard service={service} index={index} />
             </motion.div>
           ))}
         </motion.div>

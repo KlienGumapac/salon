@@ -1,6 +1,30 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 💇‍♀️ Sheila Magpale Salon - Home of Champions
 
-## Getting Started
+A modern, professional salon website built with Next.js, featuring beautiful animations and a responsive design that showcases premium beauty services.
+
+## ✨ About This Project
+
+This is a comprehensive salon website for **Sheila Magpale Salon Home of Champions**, designed to provide an elegant online presence for a professional beauty salon. The website features modern UI/UX design, smooth animations, and mobile-responsive layouts to attract and engage clients.
+
+## 🎯 Features
+
+- **Modern Design**: Contemporary UI with smooth animations using Framer Motion
+- **Responsive Layout**: Mobile-first design that works perfectly on all devices
+- **Service Showcase**: Interactive service cards with pricing in Philippine Peso (₱)
+- **Gallery Section**: Dynamic image gallery with animated scrolling effects
+- **Contact Forms**: Professional booking and contact forms
+- **Testimonials**: Social media-style customer reviews and testimonials
+- **SEO Optimized**: Built with Next.js 14 for optimal performance and SEO
+
+## 🛠️ Built With
+
+- **[Next.js 14](https://nextjs.org)** - React framework with App Router
+- **[TypeScript](https://www.typescriptlang.org/)** - Type-safe JavaScript
+- **[Tailwind CSS v4](https://tailwindcss.com/)** - Utility-first CSS framework
+- **[Framer Motion](https://www.framer.com/motion/)** - Production-ready motion library
+- **[Lucide React](https://lucide.dev/)** - Beautiful & consistent icon toolkit
+
+## 🚀 Getting Started
 
 First, run the development server:
 
@@ -16,21 +40,30 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📱 Mobile Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Stacking Cards**: Unique mobile card stacking effect inspired by modern web design
+- **Touch-Friendly**: Optimized for mobile interactions and gestures
+- **Fast Loading**: Optimized images and animations for mobile performance
 
-## Learn More
+## 🎨 Design Highlights
 
-To learn more about Next.js, take a look at the following resources:
+- **Hero Section**: Engaging hero with salon branding and key statistics
+- **Service Cards**: Modern cards with hover effects and gradient styling
+- **Gallery**: Animated vertical scrolling gallery with masonry layout
+- **Testimonials**: Social media-style review cards with ratings and interactions
+- **Contact Section**: Professional booking forms and location information
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📧 Contact & Developer
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Developer**: [Klien Gumapac](https://github.com/KlienGumapac)  
+**Repository**: [salon](https://github.com/KlienGumapac/salon.git)  
+**Email**: Kliengumapac5@gmail.com
 
-## Deploy on Vercel
+## 🌟 Project Status
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project represents a modern approach to salon website design, focusing on user experience, mobile responsiveness, and professional aesthetics. Perfect for beauty salons, spas, and similar service-based businesses.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+_Built with ❤️ by [Klien Gumapac](https://github.com/KlienGumapac)_
