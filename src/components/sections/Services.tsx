@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { Scissors, Palette, Sparkles, Crown, Heart, Zap } from "lucide-react"
 import Card from "@/components/ui/Card"
 import Button from "@/components/ui/Button"
+import ClickSpark from "@/components/animations/ClickSpark"
 import { fadeInUp, staggerContainer } from "@/components/animations/variants"
 
 const ServiceCard = ({ service, index }: { service: any; index: number }) => {
@@ -57,19 +58,21 @@ const ServiceCard = ({ service, index }: { service: any; index: number }) => {
           ))}
         </div>
 
-        {/* Modern CTA Button */}
+        {/* Modern CTA Button with Click Spark */}
         <div className="relative">
-          <Button 
-            variant="primary" 
-            className="w-full bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary shadow-lg hover:shadow-xl group-hover:shadow-primary/25 transition-all duration-300 rounded-xl py-3"
-          >
-            <span className="flex items-center justify-center gap-2">
-              Book Now
-              <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </span>
-          </Button>
+          <ClickSpark color="#d4af37" sparkCount={6}>
+            <Button 
+              variant="primary" 
+              className="w-full bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary shadow-lg hover:shadow-xl group-hover:shadow-primary/25 transition-all duration-300 rounded-xl py-3"
+            >
+              <span className="flex items-center justify-center gap-2">
+                Book Now
+                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
+            </Button>
+          </ClickSpark>
         </div>
       </div>
 
@@ -200,12 +203,16 @@ const Services = () => {
               your beauty goals and let us create the perfect service package for you.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg">
-                Schedule Consultation
-              </Button>
-              <Button variant="outline" size="lg">
-                Call Us Now
-              </Button>
+              <ClickSpark color="#d4af37" sparkCount={8}>
+                <Button size="lg">
+                  Schedule Consultation
+                </Button>
+              </ClickSpark>
+              <ClickSpark color="#d4af37" sparkCount={6}>
+                <Button variant="outline" size="lg">
+                  Call Us Now
+                </Button>
+              </ClickSpark>
             </div>
           </div>
         </motion.div>

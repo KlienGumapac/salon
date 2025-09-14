@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { Award, Heart, Users, Sparkles, Clock, Star } from "lucide-react"
 import Card from "@/components/ui/Card"
+import CircularGallery from "@/components/animations/CircularGallery"
 import { fadeInUp, staggerContainer, slideInLeft, slideInRight } from "@/components/animations/variants"
 
 const About = () => {
@@ -105,6 +106,31 @@ const About = () => {
             </div>
           </motion.div>
         </div>
+
+        {/* Circular Gallery */}
+        <motion.div
+          className="mb-16"
+          variants={fadeInUp}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+        >
+          <div className="text-center mb-16">
+            <h3 className="text-2xl md:text-3xl font-serif font-bold text-gray-900 mb-4">
+              Our Work in Motion
+            </h3>
+            <p className="text-lg text-gray-700 max-w-2xl mx-auto font-medium">
+              Explore our diverse range of beauty services through this interactive showcase. 
+              Each piece represents our commitment to excellence and artistry.
+            </p>
+          </div>
+          <CircularGallery 
+            radius={180}
+            itemSize={120}
+            autoRotate={true}
+            rotationSpeed={0.2}
+          />
+        </motion.div>
 
         {/* Achievements */}
         <motion.div
