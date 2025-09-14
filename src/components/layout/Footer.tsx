@@ -181,7 +181,7 @@ const Footer = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                          <div className="text-gray-100 text-sm text-center md:text-left font-medium">
-               © 2024 Sheila Magpale Salon. All rights reserved. | Home of Champions
+               © 2025 Sheila Magpale Salon. All rights reserved. | Home of Champions
              </div>
              <div className="flex gap-6 text-sm text-gray-100">
               <a href="#" className="hover:text-primary transition-colors duration-200">
