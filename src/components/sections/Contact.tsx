@@ -360,7 +360,7 @@ const Contact = () => {
                 {submitStatus === 'success' && (
                   <div className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-800">
                     <CheckCircle className="w-5 h-5" />
-                    <span className="font-medium">Message sent successfully! We'll get back to you within 24 hours.</span>
+                    <span className="font-medium">Message sent successfully! We&apos;ll get back to you within 24 hours.</span>
                   </div>
                 )}
                 {submitStatus === 'error' && (

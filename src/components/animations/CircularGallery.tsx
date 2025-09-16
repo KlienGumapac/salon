@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Camera } from 'lucide-react'
+import Image from 'next/image'
 
 interface CircularGalleryProps {
   images?: Array<{ id: string; title: string; category: string; image?: string }>
@@ -116,10 +117,13 @@ const CircularGallery = ({
             >
               {/* Actual Image */}
               <div className="w-full h-full relative overflow-hidden">
-                <img 
-                  src={image.image} 
+                <Image 
+                  src={image.image ?? '/circular1.jpg'}
                   alt={image.title}
-                  className="w-full h-full object-cover"
+                  fill
+                  sizes={`${itemSize}px`}
+                  className="object-cover"
+                  priority={false}
                 />
               </div>
 

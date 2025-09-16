@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Camera, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import Button from '@/components/ui/Button';
 import { fadeInUp, staggerContainer } from '@/components/animations/variants';
+import Image from 'next/image';
 
 interface GalleryItem {
   id: number;
@@ -23,11 +24,15 @@ const GalleryImage = ({ item, height }: { item: GalleryItem; height: string }) =
       transition={{ duration: 0.3 }}
     >
       {/* Actual Image */}
-      <img 
-        src={item.image} 
-        alt={item.title}
-        className="w-full h-full object-cover"
-      />
+      <div className="absolute inset-0">
+        <Image 
+          src={item.image}
+          alt={item.title}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover"
+        />
+      </div>
       
       {/* Overlay with hover effect */}
       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
@@ -190,7 +195,6 @@ const Gallery = () => {
             </p>
           </motion.div>
         </motion.div>
-
 
 
         {/* Animated Testimonials Columns */}

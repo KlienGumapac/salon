@@ -6,6 +6,7 @@ import Button from "@/components/ui/Button"
 import ClickSpark from "@/components/animations/ClickSpark"
 import SpotlightCard from "@/components/animations/SpotlightCard"
 import { fadeInUp, slideInRight, staggerContainer } from "@/components/animations/variants"
+import Image from "next/image"
 
 const Hero = () => {
   const stats = [
@@ -103,10 +104,13 @@ const Hero = () => {
               >
                 {/* Background Image */}
                 <div className="absolute inset-0 rounded-2xl overflow-hidden">
-                  <img 
+                  <Image 
                     src="/salonphoto.jpg" 
                     alt="Sheila Magpale Salon - Home of Champions"
-                    className="w-full h-full object-cover object-center"
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover object-center"
                   />
                   
                   {/* Professional gradient overlay */}
