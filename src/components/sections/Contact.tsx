@@ -1,7 +1,8 @@
 "use client"
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser'; 
 import { 
   Phone, 
   Mail, 
@@ -10,12 +11,15 @@ import {
   Calendar, 
   MessageSquare,
   Star,
-  ThumbsUp
+  ThumbsUp,
+  CheckCircle,
+  AlertCircle
 } from 'lucide-react';
 import Button from '../ui/Button';
 import { fadeInUp, staggerContainer } from '../animations/variants';
 
 const Contact = () => {
+  const form = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -25,7 +29,8 @@ const Contact = () => {
     message: ""
   })
 
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null);
 
   const contactInfo = [
     {
@@ -37,7 +42,7 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email Us",
-      details: ["info@sheilamagpalesalon.com", "bookings@sheilamagpalesalon.com"],
+      details: ["kliengumapac5@gmail.com", "bookings@sheilamagpalesalon.com"],
       description: "Send us an email and we'll get back to you within 24 hours"
     },
     {
@@ -55,12 +60,12 @@ const Contact = () => {
   ]
 
   const services = [
-    "Hair Cut & Styling",
-    "Hair Coloring",
-    "Bridal Services",
-    "Hair Treatments",
-    "Makeup Services",
-    "Express Services",
+    "Nano Silk Rebond",
+    "Kerabond",
+    "Keratin Blowout",
+    "Brazilian Blowout",
+    "Keratin Treatment",
+    "Hair Color",
     "Consultation",
     "Other"
   ]
@@ -94,12 +99,37 @@ const Contact = () => {
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+    e.preventDefault();
     
-    setTimeout(() => {
-      setIsSubmitting(false)
-      alert("Thank you! We'll get back to you within 24 hours.")
+    if (!form.current) return;
+    
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+  
+    try {
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+      if (!serviceId || !templateId || !publicKey) {
+        console.error('EmailJS env vars missing. Set NEXT_PUBLIC_EMAILJS_* in .env.local or hosting env.');
+        setSubmitStatus('error');
+        setIsSubmitting(false);
+        return;
+      }
+ 
+      const templateParams = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        service: formData.service,
+        date: formData.date,
+        message: formData.message
+      };
+ 
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      
+      setSubmitStatus('success');
       setFormData({
         name: "",
         email: "",
@@ -107,9 +137,15 @@ const Contact = () => {
         service: "",
         date: "",
         message: ""
-      })
-    }, 2000)
-  }
+      });
+      
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <section id="contact" className="py-20 bg-gradient-to-b from-gray-50 to-white">
@@ -217,7 +253,7 @@ const Contact = () => {
                   </h3>
                 </div>
               
-              <form onSubmit={handleSubmit} className="space-y-6">
+                <form ref={form} onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-semibold text-gray-900 mb-2">
@@ -318,8 +354,21 @@ const Contact = () => {
                   isLoading={isSubmitting}
                 >
                   <ThumbsUp className="w-5 h-5 mr-2" />
-                  Send Message
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </Button>
+
+                {submitStatus === 'success' && (
+                  <div className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-800">
+                    <CheckCircle className="w-5 h-5" />
+                    <span className="font-medium">Message sent successfully! We'll get back to you within 24 hours.</span>
+                  </div>
+                )}
+                {submitStatus === 'error' && (
+                  <div className="flex items-center gap-2 p-4 bg-red-50 border border-red-200 rounded-lg text-red-800">
+                    <AlertCircle className="w-5 h-5" />
+                    <span className="font-medium">Failed to send message. Please try again or call us directly.</span>
+                  </div>
+                )}
               </form>
               </div>
               
