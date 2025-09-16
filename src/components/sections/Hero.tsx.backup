@@ -98,14 +98,14 @@ const Hero = () => {
             <div className="relative">
               {/* Professional Spotlight Card */}
               <SpotlightCard 
-                className="aspect-[3/2] max-w-2xl mx-auto p-0 bg-gradient-to-br from-white/5 to-primary/5 border-white/20"
+                className="aspect-[4/5] max-w-sm mx-auto p-0 bg-gradient-to-br from-white/5 to-primary/5 border-white/20"
                 spotlightColor="rgba(168, 85, 247, 0.25)"
               >
                 {/* Background Image */}
                 <div className="absolute inset-0 rounded-2xl overflow-hidden">
                   <img 
-                    src="/salonphoto.jpg" 
-                    alt="Sheila Magpale Salon - Home of Champions"
+                    src="/hero-background.png" 
+                    alt="Professional Salon Excellence"
                     className="w-full h-full object-cover object-center"
                   />
                   
@@ -115,6 +115,9 @@ const Hero = () => {
                   {/* Elegant content overlay */}
                   <div className="absolute inset-0 flex flex-col justify-end p-6">
                     <div className="text-center space-y-2">
+                      <div className="inline-flex items-center justify-center w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full mb-3">
+                        <Star className="w-6 h-6 text-white" />
+                      </div>
                       <h3 className="text-white font-bold text-xl tracking-wide drop-shadow-lg">
                         Professional Excellence
                       </h3>
@@ -124,7 +127,42 @@ const Hero = () => {
                     </div>
                   </div>
                 </div>
-              </SpotlightCard>     
+              </SpotlightCard>
+
+              {/* Floating Cards */}
+              <motion.div
+                className="absolute -top-4 -left-2 md:-top-6 md:-left-6 bg-white rounded-2xl p-3 md:p-4 shadow-xl border border-border"
+                initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
+                animate={{ opacity: 1, scale: 1, rotate: -5 }}
+                transition={{ delay: 0.8, duration: 0.6 }}
+              >
+                <div className="flex items-center gap-2 md:gap-3">
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                    <Star className="w-5 h-5 md:w-6 md:h-6 text-primary" />
+                  </div>
+                  <div>
+                    <div className="font-semibold text-gray-900 text-sm md:text-base">Premium Services</div>
+                    <div className="text-xs md:text-sm text-gray-600">Hair & Makeup</div>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div
+                className="absolute -bottom-4 -right-2 md:-bottom-6 md:-right-6 bg-white rounded-2xl p-3 md:p-4 shadow-xl border border-border"
+                initial={{ opacity: 0, scale: 0.8, rotate: 10 }}
+                animate={{ opacity: 1, scale: 1, rotate: 5 }}
+                transition={{ delay: 1, duration: 0.6 }}
+              >
+                <div className="flex items-center gap-2 md:gap-3">
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-secondary/10 rounded-full flex items-center justify-center">
+                    <Award className="w-5 h-5 md:w-6 md:h-6 text-secondary" />
+                  </div>
+                  <div>
+                    <div className="font-semibold text-gray-900 text-sm md:text-base">Master Stylist</div>
+                    <div className="text-xs md:text-sm text-gray-600">Certified Professional</div>
+                  </div>
+                </div>
+              </motion.div>
             </div>
           </motion.div>
         </div>
