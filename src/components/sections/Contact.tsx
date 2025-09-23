@@ -523,25 +523,9 @@ const Contact = () => {
                       <span className="inline-flex items-center px-3 py-1 bg-primary/10 text-primary text-xs rounded-full font-medium">
                         {testimonial.service}
                       </span>
-                      <span className="text-xs text-gray-400">2 days ago</span>
                     </div>
 
-                    {/* Like/Heart interaction */}
-                    <div className="flex items-center justify-between mt-4 pt-3 border-t border-gray-100">
-                      <div className="flex items-center gap-4">
-                        <button className="flex items-center gap-1 text-gray-400 hover:text-red-500 transition-colors duration-200">
-                          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
-                          </svg>
-                          <span className="text-xs">24</span>
-                        </button>
-                        <button className="flex items-center gap-1 text-gray-400 hover:text-primary transition-colors duration-200">
-                          <MessageSquare className="w-4 h-4" />
-                          <span className="text-xs">Reply</span>
-                        </button>
-                      </div>
-                      <span className="text-xs text-gray-400">Helpful</span>
-                    </div>
+                    
                   </div>
 
                   {/* Bottom accent line */}

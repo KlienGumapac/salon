@@ -48,8 +48,6 @@ const Footer = () => {
 
   const socialLinks = [
     { icon: Facebook, href: "#", label: "Facebook" },
-    { icon: Instagram, href: "#", label: "Instagram" },
-    { icon: Twitter, href: "#", label: "Twitter" },
   ]
 
   return (
@@ -154,26 +152,7 @@ const Footer = () => {
         whileInView="animate"
         viewport={{ once: true }}
       >
-        <div className="container mx-auto px-4">
-          <div className="text-center">
-            <h4 className="text-xl font-semibold text-white mb-2">
-              Stay Updated with Our Latest Offers
-            </h4>
-                         <p className="text-gray-100 mb-6 font-medium">
-               Subscribe to our newsletter and never miss our beauty tips and exclusive deals.
-             </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                             <input
-                 type="email"
-                 placeholder="Enter your email"
-                 className="flex-1 px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent focus:bg-white/30"
-               />
-              <Button className="px-8">
-                Subscribe
-              </Button>
-            </div>
-          </div>
-        </div>
+        
       </motion.div>
 
       {/* Bottom Bar */}
