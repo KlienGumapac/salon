@@ -25,7 +25,7 @@ const CircularGallery = ({
   const defaultImages = [
     { id: '1', title: 'Hair Styling', category: 'styling', image: '/circular1.jpg' },
     { id: '2', title: 'Hair Coloring', category: 'coloring', image: '/circular10.jpg' },
-    { id: '3', title: 'Bridal Look', category: 'bridal', image: '/circular3.jpg' },
+    { id: '3', title: 'curly Look', category: 'curly', image: '/circular3.jpg' },
     { id: '4', title: 'Hair Treatment', category: 'treatment', image: '/circular11.jpg' },
     { id: '5', title: 'Makeup Service', category: 'makeup', image: '/circular5.jpg' },
     { id: '6', title: 'Hair Cut', category: 'cuts', image: '/circular6.jpg' },
