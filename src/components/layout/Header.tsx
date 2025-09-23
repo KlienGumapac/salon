@@ -56,9 +56,6 @@ const Header = () => {
             ? "bg-white/95 backdrop-blur-md shadow-lg"
             : "bg-white"
         )}
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6 }}
       >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20">
