@@ -125,11 +125,11 @@ const Gallery = () => {
     },
     {
       id: 9,
-      category: "bridal",
-      title: "Bridal Beauty Services",
+      category: "curly",
+      title: "curly Beauty Services",
       description: "Complete bridal styling and beauty packages",
       image: "/circular3.jpg",
-      tags: ["Bridal", "Beauty", "Complete"]
+      tags: ["curly", "Beauty", "Complete"]
     }
   ]
 

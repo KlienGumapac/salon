@@ -443,7 +443,7 @@ const Contact = () => {
                 <p className="text-gray-600 mb-6 font-medium text-sm">
                   Need to book urgently? Call us directly for same-day appointments.
                 </p>
-                <div className="space-y-3">
+                <div className="space-y-5">
                   <Button className="w-full bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary shadow-lg hover:shadow-xl group-hover:shadow-primary/25 transition-all duration-300 rounded-xl">
                     <Phone className="w-4 h-4 mr-2" />
                     Call (555) 123-4567
@@ -552,14 +552,6 @@ const Contact = () => {
               Join hundreds of satisfied clients who have discovered their champion look at our salon. 
               Book your appointment today and experience the difference.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg">
-                Book Now
-              </Button>
-              <Button variant="outline" size="lg">
-                Call (555) 123-4567
-              </Button>
-            </div>
           </div>
         </motion.div>
       </div>
