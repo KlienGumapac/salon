@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useState, useRef } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser'; 
 import { 
@@ -360,7 +361,7 @@ const Contact = () => {
                 {submitStatus === 'success' && (
                   <div className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-800">
                     <CheckCircle className="w-5 h-5" />
-                    <span className="font-medium">Message sent successfully! We&apos;ll get back to you within 24 hours.</span>
+                    <span className="font-medium">Message sent successfully! We&apos;ll get back to you as soon as possible.</span>
                   </div>
                 )}
                 {submitStatus === 'error' && (
@@ -392,31 +393,13 @@ const Contact = () => {
               
               {/* Content */}
               <div className="relative">
-                <div className="aspect-[4/3] bg-gradient-to-br from-primary/20 to-secondary/20 rounded-3xl overflow-hidden">
-                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/10 to-secondary/10">
-                    <div className="text-center">
-                      {/* Icon with modern design */}
-                      <div className="relative mb-6">
-                        <div className="w-20 h-20 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300">
-                          <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center shadow-lg">
-                            <MapPin className="w-10 h-10 text-primary" />
-                          </div>
-                        </div>
-                        {/* Decorative elements */}
-                        <div className="absolute -top-2 -right-2 w-4 h-4 bg-primary/20 rounded-full"></div>
-                        <div className="absolute -bottom-2 -left-2 w-3 h-3 bg-secondary/20 rounded-full"></div>
-                      </div>
-                      
-                      <h4 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary transition-colors duration-300">
-                        Sheila Magpale Salon
-                      </h4>
-                      <p className="text-gray-700 font-semibold">
-                        123 Beauty Street<br />
-                        Downtown City, ST 12345
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                <Image
+                  src="/salon-map.png"
+                  alt="Sheila Magpale Salon Location"
+                  width={800}
+                  height={600}
+                  className="w-full h-auto rounded-2xl object-cover"
+                />
               </div>
               
               {/* Bottom accent line */}
@@ -426,34 +409,7 @@ const Contact = () => {
             {/* Quick Contact */}
             <div className="relative bg-white rounded-3xl border border-gray-100 overflow-hidden group hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 hover:-translate-y-2">
               {/* Gradient Background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
-              {/* Content */}
-              <div className="relative p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center">
-                    <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-lg">
-                      <Calendar className="w-5 h-5 text-primary" />
-                    </div>
-                  </div>
-                  <h4 className="text-lg font-bold text-gray-900 group-hover:text-primary transition-colors duration-300">
-                    Quick Booking
-                  </h4>
-                </div>
-                <p className="text-gray-600 mb-6 font-medium text-sm">
-                  Need to book urgently? Call us directly for same-day appointments.
-                </p>
-                <div className="space-y-5">
-                  <Button className="w-full bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary shadow-lg hover:shadow-xl group-hover:shadow-primary/25 transition-all duration-300 rounded-xl">
-                    <Phone className="w-4 h-4 mr-2" />
-                    Call (555) 123-4567
-                  </Button>
-                  <Button variant="outline" className="w-full border-2 border-primary text-primary hover:bg-primary hover:text-white rounded-xl transition-all duration-300">
-                    <MessageSquare className="w-4 h-4 mr-2" />
-                    Text Us
-                  </Button>
-                </div>
-              </div>
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>    
               
               {/* Bottom accent line */}
               <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary/50 via-primary to-primary/50 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
@@ -560,3 +516,4 @@ const Contact = () => {
 }
 
 export default Contact 
+
