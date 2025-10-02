@@ -15,7 +15,7 @@ const Footer = () => {
     {
       icon: Mail,
       title: "Email Us",
-      details: ["info@sheilamagpalesalon.com", "bookings@sheilamagpalesalon.com"],
+      details: ["info@sheilamagpalesalon.co", "bookings@sheilamagpalesalon.com"],
     },
     {
       icon: MapPin,
