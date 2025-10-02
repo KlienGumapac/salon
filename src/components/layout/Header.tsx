@@ -38,12 +38,12 @@ const Header = () => {
             </div>
             <div className="flex items-center gap-1">
               <MapPin className="w-4 h-4" />
-              <span>123 Beauty St, City</span>
+              <span>No.1 Ponciano Street & Crooked Road, Brgy 3-A, Davao City</span>
             </div>
           </div>
           <div className="flex items-center gap-1">
             <Clock className="w-4 h-4" />
-            <span>Mon-Sat: 9AM-7PM | Sun: 10AM-5PM</span>
+            <span>Mon-Sun, 9AM-7PM</span>
           </div>
         </div>
       </div>
